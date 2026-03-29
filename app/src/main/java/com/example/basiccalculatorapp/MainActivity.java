@@ -13,11 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     //Declaring UI components
     //input fields
-    EditText num1, num2;
-    TextView result;
+    private EditText num1, num2;
+    private TextView result;
    //buttons
-    Button add, sub, mul, div;
-
+    private Button add, sub, mul, div;
+    private static final String ADD = "+";
+    private static final String SUB = "-";
+    private static final String MUL = "*";
+    private static final String DIV = "/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,51 +36,48 @@ public class MainActivity extends AppCompatActivity {
         sub = findViewById(R.id.sub);
         mul = findViewById(R.id.mul);
         div = findViewById(R.id.div);
-
-        // button click listeners
-
         //addition
-        add.setOnClickListener(v -> calculate("+"));
+        add.setOnClickListener(v -> calculate(ADD));
         //subtraction
-        sub.setOnClickListener(v -> calculate("-"));
+        sub.setOnClickListener(v -> calculate(SUB));
         //multiplication
-        mul.setOnClickListener(v -> calculate("*"));
+        mul.setOnClickListener(v -> calculate(MUL));
         //Division
-        div.setOnClickListener(v -> calculate("/"));
+        div.setOnClickListener(v -> calculate(DIV));
 
     }
 
     //methods main logic
     private void calculate(String operation) {
         //reading input
-        String val1 = num1.getText().toString();
-        String val2 = num2.getText().toString();
+        String valOfNum1 = num1.getText().toString();
+        String valOfNum2 = num2.getText().toString();
 
-        Log.d("Calculator", "Input1: " + val1);
-        Log.d("Calculator", "Input2: " + val2);
+        Log.d("Calculator", "Input1: " + valOfNum1);
+        Log.d("Calculator", "Input2: " + valOfNum2);
         //Validation
 
-        if (val1.isEmpty() || val2.isEmpty()) {
+        if (valOfNum1.isEmpty() || valOfNum2.isEmpty()) {
             Toast.makeText(this, "Enter both number", Toast.LENGTH_SHORT).show();
             return;
         }
-        double a = Double.parseDouble(val1);
-        double b = Double.parseDouble(val2);
+        double a = Double.parseDouble(valOfNum1);
+        double b = Double.parseDouble(valOfNum2);
         double res = 0;
 
         // Operations
 
         switch (operation) {
-            case "+":
+            case ADD:
                 res = a + b;
                 break;
-            case "-":
+            case SUB:
                 res = a - b;
                 break;
-            case "*":
+            case MUL:
                 res = a * b;
                 break;
-            case "/":
+            case DIV:
                 if (b == 0) {
                     result.setText("Cannot divide by zero");
                     return;
