@@ -10,13 +10,13 @@ import android.os.Handler;
 
 public class CalculatorService extends Service {
 
-    // ✅ Operation constants
+    // Operation constants
     public static final int ADD = 1;
     public static final int SUB = 2;
     public static final int MUL = 3;
     public static final int DIV = 4;
 
-    // ✅ Binder
+    // Binder
     private final IBinder binder = new LocalBinder();
 
     public class LocalBinder extends Binder {
@@ -62,7 +62,7 @@ public class CalculatorService extends Service {
         return super.onUnbind(intent);
     }
 
-    // ✅ Calculation logic
+    // Calculation logic
     public double calculate(double a, double b, int operation) {
         switch (operation) {
             case ADD:
