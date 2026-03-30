@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity
     private CalculatorService calculatorService;
     private boolean isBound = false;
 
-    // ✅ Service connection
+    // Service connection
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
